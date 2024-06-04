@@ -67,18 +67,19 @@ The idea is to apply the concept that when converting from the binary int to the
 
 * Any arithmetic operations with unsigned values will cast the result to be unsigned.
 
-*  The size_t defined as unsinged value with length = word size, In C++, `size_t` is a data type used to represent the size of objects. It's an unsigned integer type that's capable of storing the size in bytes of any object. Its actual size can vary depending on the platform and compiler, but it's typically chosen to **be large enough** to represent the maximum possible size of a theoretically possible object on the given platform. size_t is better than used unsigned_int .Reference https://pvs-studio.com/en/blog/terms/0044/#:~:text=The%20size_t%20is%20chosen%20so,64%2Dbit%20one%2064%20bits.
+*  The size_t defined as unsinged value with length = word size, In C++, `size_t` is a data type used to represent the size of objects. It's an unsigned integer type that's capable of storing the size in bytes of any object. Its actual size can vary depending on the platform and compiler, but it's typically chosen to **be large enough** to represent the maximum possible size of a theoretically possible object on the given platform. size_t is better than used unsigned_int .
+*  Reference https://pvs-studio.com/en/blog/terms/0044/#:~:text=The%20size_t%20is%20chosen%20so,64%2Dbit%20one%2064%20bits.
 * The **2's complement** of a value is **~x + 1;**
 
 
 
 ## Lab2
 
-![image-20240523224807402](C:\Users\Richard\AppData\Roaming\Typora\typora-user-images\image-20240523224807402.png)
+![image-20240523224807402](CSAPP.assets/image-20240523224807402.png)
 
-![image-20240523224819581](C:\Users\Richard\AppData\Roaming\Typora\typora-user-images\image-20240523224819581.png)
+![image-20240523224819581](CSAPP.assets/image-20240523224819581.png)
 
-![image-20240523225033369](C:\Users\Richard\AppData\Roaming\Typora\typora-user-images\image-20240523225033369.png)
+![image-20240523225033369](CSAPP.assets/image-20240523225033369.png)
 
 ### GDB Debug tool
 
@@ -559,6 +560,105 @@ Crazy question :<><>
 ionevg
 
 ### Phase_6
+
+```assembly
+s(gdb) disas phase_6
+Dump of assembler code for function phase_6:
+   0x00000000004010f4 <+0>:     push   %r14
+   0x00000000004010f6 <+2>:     push   %r13
+   0x00000000004010f8 <+4>:     push   %r12
+   0x00000000004010fa <+6>:     push   %rbp
+   0x00000000004010fb <+7>:     push   %rbx
+   0x00000000004010fc <+8>:     sub    $0x50,%rsp	
+   0x0000000000401100 <+12>:    mov    %rsp,%r13	;r13 = rsp 		;r13 and rsi can both represent input
+   0x0000000000401103 <+15>:    mov    %rsp,%rsi	;rsi = rsp
+   0x0000000000401106 <+18>:    callq  0x40145c <read_six_numbers>	;load six inputs from rdi to rsp, see notes from phase_2, index by 4 each			;rsp = six numbers
+   0x000000000040110b <+23>:    mov    %rsp,%r14	;r14 = rsp
+   0x000000000040110e <+26>:    mov    $0x0,%r12d	;r12d = 0
+   
+   0x0000000000401114 <+32>:    mov    %r13,%rbp	;rbp = r13, rbp=r13 = 2nd int
+   0x0000000000401117 <+35>:    mov    0x0(%r13),%eax		;eax = r13 + 0, first number
+   0x000000000040111b <+39>:    sub    $0x1,%eax	;eax = eax - 1
+   0x000000000040111e <+42>:    cmp    $0x5,%eax	;cmp eax,5		eax <= 5, from previouse, eax <= 6 
+   0x0000000000401121 <+45>:    jbe    0x401128 <phase_6+52>	;jmp if eax is below or equal to 5, has to
+   0x0000000000401123 <+47>:    callq  0x40143a <explode_bomb>	
+   0x0000000000401128 <+52>:    add    $0x1,%r12d	;r12d = r12d + 1 = 0 + 1
+   0x000000000040112c <+56>:    cmp    $0x6,%r12d	;cmp 6, r12d(1)
+   0x0000000000401130 <+60>:    je     0x401153 <phase_6+95>	;jump if equal, not equal for the first
+   0x0000000000401132 <+62>:    mov    %r12d,%ebx	;ebx = r12d = 1
+   
+   0x0000000000401135 <+65>:    movslq %ebx,%rax	;rax = ebx = 1, rax=ebx=2
+   ;movslq, movsbl src, dst byte to int, sign-extend, if the ebx -> convert to single byte is 1, extend the sign bit
+   0x0000000000401138 <+68>:    mov    (%rsp,%rax,4),%eax	;eax = rsp + rax*4 = rsp + 1*4, move the input string right by 1, index will increase again now
+   0x000000000040113b <+71>:    cmp    %eax,0x0(%rbp)	;
+   0x000000000040113e <+74>:    jne    0x401145 <phase_6+81>	;can not be equal, 1st and 2nd
+   0x0000000000401140 <+76>:    callq  0x40143a <explode_bomb>
+   0x0000000000401145 <+81>:    add    $0x1,%ebx	;ebx = ebx + 1
+   0x0000000000401148 <+84>:    cmp    $0x5,%ebx	;cmp 5,ebx + 1
+   0x000000000040114b <+87>:    jle    0x401135 <phase_6+65>	;jmp if ebx <= 5
+   0x000000000040114d <+89>:    add    $0x4,%r13	;r13 +4, move to 2nd int
+   0x0000000000401151 <+93>:    jmp    0x401114 <phase_6+32> ;
+   0x0000000000401153 <+95>:    lea    0x18(%rsp),%rsi
+   0x0000000000401158 <+100>:   mov    %r14,%rax
+   0x000000000040115b <+103>:   mov    $0x7,%ecx
+   0x0000000000401160 <+108>:   mov    %ecx,%edx
+   0x0000000000401162 <+110>:   sub    (%rax),%edx
+   0x0000000000401164 <+112>:   mov    %edx,(%rax)
+   0x0000000000401166 <+114>:   add    $0x4,%rax
+   0x000000000040116a <+118>:   cmp    %rsi,%rax
+   0x000000000040116d <+121>:   jne    0x401160 <phase_6+108>
+   0x000000000040116f <+123>:   mov    $0x0,%esi
+   0x0000000000401174 <+128>:   jmp    0x401197 <phase_6+163>
+   0x0000000000401176 <+130>:   mov    0x8(%rdx),%rdx
+   0x000000000040117a <+134>:   add    $0x1,%eax
+   0x000000000040117d <+137>:   cmp    %ecx,%eax
+   0x000000000040117f <+139>:   jne    0x401176 <phase_6+130>
+   0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>
+   0x0000000000401183 <+143>:   mov    $0x6032d0,%edx
+   0x0000000000401188 <+148>:   mov    %rdx,0x20(%rsp,%rsi,2)
+   0x000000000040118d <+153>:   add    $0x4,%rsi
+   0x0000000000401191 <+157>:   cmp    $0x18,%rsi
+   0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183>
+   0x0000000000401197 <+163>:   mov    (%rsp,%rsi,1),%ecx
+   0x000000000040119a <+166>:   cmp    $0x1,%ecx
+   0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>
+   0x000000000040119f <+171>:   mov    $0x1,%eax
+   0x00000000004011a4 <+176>:   mov    $0x6032d0,%edx
+   0x00000000004011a9 <+181>:   jmp    0x401176 <phase_6+130>
+   0x00000000004011ab <+183>:   mov    0x20(%rsp),%rbx
+   0x00000000004011b0 <+188>:   lea    0x28(%rsp),%rax
+   0x00000000004011b5 <+193>:   lea    0x50(%rsp),%rsi
+   0x00000000004011ba <+198>:   mov    %rbx,%rcx
+   0x00000000004011bd <+201>:   mov    (%rax),%rdx
+   0x00000000004011c0 <+204>:   mov    %rdx,0x8(%rcx)
+   0x00000000004011c4 <+208>:   add    $0x8,%rax
+   0x00000000004011c8 <+212>:   cmp    %rsi,%rax
+   0x00000000004011cb <+215>:   je     0x4011d2 <phase_6+222>
+   0x00000000004011cd <+217>:   mov    %rdx,%rcx
+   0x00000000004011d0 <+220>:   jmp    0x4011bd <phase_6+201>
+   0x00000000004011d2 <+222>:   movq   $0x0,0x8(%rdx)
+   0x00000000004011da <+230>:   mov    $0x5,%ebp
+   0x00000000004011df <+235>:   mov    0x8(%rbx),%rax
+   0x00000000004011e3 <+239>:   mov    (%rax),%eax
+   0x00000000004011e5 <+241>:   cmp    %eax,(%rbx)
+   0x00000000004011e7 <+243>:   jge    0x4011ee <phase_6+250>
+   0x00000000004011e9 <+245>:   callq  0x40143a <explode_bomb>
+   0x00000000004011ee <+250>:   mov    0x8(%rbx),%rbx
+   0x00000000004011f2 <+254>:   sub    $0x1,%ebp
+   0x00000000004011f5 <+257>:   jne    0x4011df <phase_6+235>
+   0x00000000004011f7 <+259>:   add    $0x50,%rsp
+   0x00000000004011fb <+263>:   pop    %rbx
+   0x00000000004011fc <+264>:   pop    %rbp
+   0x00000000004011fd <+265>:   pop    %r12
+   0x00000000004011ff <+267>:   pop    %r13
+   0x0000000000401201 <+269>:   pop    %r14
+   0x0000000000401203 <+271>:   retq   
+End of assembler dump.
+```
+
+
+
+
 
 
 
