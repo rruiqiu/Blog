@@ -587,6 +587,7 @@ Dump of assembler code for function phase_6:
    0x0000000000401130 <+60>:    je     0x401153 <phase_6+95>	;jump if equal, not equal for the first
    0x0000000000401132 <+62>:    mov    %r12d,%ebx	;ebx = r12d = 1
    
+   ;another loop to verify no repeated ints
    0x0000000000401135 <+65>:    movslq %ebx,%rax	;rax = ebx = 1, rax=ebx=2
    ;movslq, movsbl src, dst byte to int, sign-extend, if the ebx -> convert to single byte is 1, extend the sign bit
    0x0000000000401138 <+68>:    mov    (%rsp,%rax,4),%eax	;eax = rsp + rax*4 = rsp + 1*4, move the input string right by 1, index will increase again now
@@ -598,31 +599,41 @@ Dump of assembler code for function phase_6:
    0x000000000040114b <+87>:    jle    0x401135 <phase_6+65>	;jmp if ebx <= 5
    0x000000000040114d <+89>:    add    $0x4,%r13	;r13 +4, move to 2nd int
    0x0000000000401151 <+93>:    jmp    0x401114 <phase_6+32> ;
-   0x0000000000401153 <+95>:    lea    0x18(%rsp),%rsi
-   0x0000000000401158 <+100>:   mov    %r14,%rax
-   0x000000000040115b <+103>:   mov    $0x7,%ecx
-   0x0000000000401160 <+108>:   mov    %ecx,%edx
-   0x0000000000401162 <+110>:   sub    (%rax),%edx
-   0x0000000000401164 <+112>:   mov    %edx,(%rax)
-   0x0000000000401166 <+114>:   add    $0x4,%rax
-   0x000000000040116a <+118>:   cmp    %rsi,%rax
-   0x000000000040116d <+121>:   jne    0x401160 <phase_6+108>
-   0x000000000040116f <+123>:   mov    $0x0,%esi
+   
+   ;32 - 93: go from each input, compare with make sure not higher than 6, and each int it will compare if it is the same as the rest of the ints. Make sure no repeated value appear, then in this case. the input 0,1,2,3,4,5,6
+   
+   0x0000000000401153 <+95>:    lea    0x18(%rsp),%rsi	;load last int to rsi
+   0x0000000000401158 <+100>:   mov    %r14,%rax	;rax = r14 = first int index
+   0x000000000040115b <+103>:   mov    $0x7,%ecx	;ecx = 0x7
+   
+   0x0000000000401160 <+108>:   mov    %ecx,%edx	;edx = ecx = 0x7
+   0x0000000000401162 <+110>:   sub    (%rax),%edx	; edx = edx - rax = 7 - 1st int
+   0x0000000000401164 <+112>:   mov    %edx,(%rax)	; (rax) = edx
+   0x0000000000401166 <+114>:   add    $0x4,%rax	; (rax) = rax + 0x4
+   0x000000000040116a <+118>:   cmp    %rsi,%rax	; cmp last_int, rax= (7-1st int) + 0x4 = 11 - 1st int, compare the last int with the 
+   0x000000000040116d <+121>:   jne    0x401160 <phase_6+108>	;
+   
+   ;95 - 121: loop six values, use 7 to subtrace each int
+   
+   0x000000000040116f <+123>:   mov    $0x0,%esi	;esi = 0
    0x0000000000401174 <+128>:   jmp    0x401197 <phase_6+163>
+   
    0x0000000000401176 <+130>:   mov    0x8(%rdx),%rdx
    0x000000000040117a <+134>:   add    $0x1,%eax
    0x000000000040117d <+137>:   cmp    %ecx,%eax
    0x000000000040117f <+139>:   jne    0x401176 <phase_6+130>
    0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>
-   0x0000000000401183 <+143>:   mov    $0x6032d0,%edx
-   0x0000000000401188 <+148>:   mov    %rdx,0x20(%rsp,%rsi,2)
+   
+   0x0000000000401183 <+143>:   mov    $0x6032d0,%edx	;if the value is 6 , edx = 1
+   0x0000000000401188 <+148>:   mov    %rdx,0x20(%rsp,%rsi,2)	;rsp + 2*rsi + 20 = 1st int + 20
    0x000000000040118d <+153>:   add    $0x4,%rsi
    0x0000000000401191 <+157>:   cmp    $0x18,%rsi
    0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183>
-   0x0000000000401197 <+163>:   mov    (%rsp,%rsi,1),%ecx
-   0x000000000040119a <+166>:   cmp    $0x1,%ecx
-   0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>
-   0x000000000040119f <+171>:   mov    $0x1,%eax
+   
+   0x0000000000401197 <+163>:   mov    (%rsp,%rsi,1),%ecx ;rsp = (1st int + 0 *1) = ecx = 1st int
+   0x000000000040119a <+166>:   cmp    $0x1,%ecx	;cmp 1, ecx
+   0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>	;jmp if ecx < 1, guess only if the input is 6 in this case.
+   0x000000000040119f <+171>:   mov    $0x1,%eax	;eax = 1
    0x00000000004011a4 <+176>:   mov    $0x6032d0,%edx
    0x00000000004011a9 <+181>:   jmp    0x401176 <phase_6+130>
    0x00000000004011ab <+183>:   mov    0x20(%rsp),%rbx
@@ -658,9 +669,13 @@ End of assembler dump.
 
 
 
+Notes:
 
+In x86-64 assembly, registers like `%eax` do not have a fixed memory address because they are part of the CPU's internal state. Instead, `%eax` is a 32-bit register within the CPU that can hold a value. When you perform an operation like `mov 0x0(%r13), %eax`, you are transferring a value from memory into the `%eax` register, not an address.
 
+**Storing Values**: `RAX` can hold any integer value, which can be used for arithmetic operations, comparisons, or as a general-purpose register.
 
+**Pointer/Address Holder**: `RAX` can store memory addresses, allowing it to be used as a pointer to access or manipulate data in memory.
 
 
 
