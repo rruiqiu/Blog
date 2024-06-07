@@ -618,46 +618,68 @@ Dump of assembler code for function phase_6:
    0x000000000040116f <+123>:   mov    $0x0,%esi	;esi = 0
    0x0000000000401174 <+128>:   jmp    0x401197 <phase_6+163>
    
-   0x0000000000401176 <+130>:   mov    0x8(%rdx),%rdx
-   0x000000000040117a <+134>:   add    $0x1,%eax
-   0x000000000040117d <+137>:   cmp    %ecx,%eax
+   0x0000000000401176 <+130>:   mov    0x8(%rdx),%rdx; rdx = rdx +8 = -32
+   ;0x6032d8 <node1+8>:     "\340\062`" , this is octal format, convert it to decimal = 224, 50,
+   0x000000000040117a <+134>:   add    $0x1,%eax ;eax = 2
+   0x000000000040117d <+137>:   cmp    %ecx,%eax	;cmp 2nd int with 2, if not equal, keep adding 1 until it equals the 2nd int. 
    0x000000000040117f <+139>:   jne    0x401176 <phase_6+130>
-   0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>
+   0x0000000000401181 <+141>:   jmp    0x401188 <phase_6+148>	;if equal, eax = ecx = 2nd int
+   ;from 169
+   0x0000000000401183 <+143>:   mov    $0x6032d0,%edx	;if the value is 6 , edx = 76
+   0x0000000000401188 <+148>:   mov    %rdx,0x20(%rsp,%rsi,2)	;rsp + 2*rsi + 20 = 1st int + 20 = move 1 to the last int
+   0x000000000040118d <+153>:   add    $0x4,%rsi	;rsi = 0 +4
+   0x0000000000401191 <+157>:   cmp    $0x18,%rsi	;cmp if it reaches the end,
+   0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183> ;if not cont,
    
-   0x0000000000401183 <+143>:   mov    $0x6032d0,%edx	;if the value is 6 , edx = 1
-   0x0000000000401188 <+148>:   mov    %rdx,0x20(%rsp,%rsi,2)	;rsp + 2*rsi + 20 = 1st int + 20
-   0x000000000040118d <+153>:   add    $0x4,%rsi
-   0x0000000000401191 <+157>:   cmp    $0x18,%rsi
-   0x0000000000401195 <+161>:   je     0x4011ab <phase_6+183>
-   
-   0x0000000000401197 <+163>:   mov    (%rsp,%rsi,1),%ecx ;rsp = (1st int + 0 *1) = ecx = 1st int
-   0x000000000040119a <+166>:   cmp    $0x1,%ecx	;cmp 1, ecx
+   0x0000000000401197 <+163>:   mov    (%rsp,%rsi,1),%ecx ;rsp = (1st int + 0 *1) = ecx = 1st int, next loop go to 2nd int
+   0x000000000040119a <+166>:   cmp    $0x1,%ecx	;cmp 1, ecx, if it is not 6, it should be higher here
    0x000000000040119d <+169>:   jle    0x401183 <phase_6+143>	;jmp if ecx < 1, guess only if the input is 6 in this case.
    0x000000000040119f <+171>:   mov    $0x1,%eax	;eax = 1
-   0x00000000004011a4 <+176>:   mov    $0x6032d0,%edx
+   0x00000000004011a4 <+176>:   mov    $0x6032d0,%edx	;edx = 1
    0x00000000004011a9 <+181>:   jmp    0x401176 <phase_6+130>
-   0x00000000004011ab <+183>:   mov    0x20(%rsp),%rbx
-   0x00000000004011b0 <+188>:   lea    0x28(%rsp),%rax
-   0x00000000004011b5 <+193>:   lea    0x50(%rsp),%rsi
-   0x00000000004011ba <+198>:   mov    %rbx,%rcx
-   0x00000000004011bd <+201>:   mov    (%rax),%rdx
-   0x00000000004011c0 <+204>:   mov    %rdx,0x8(%rcx)
-   0x00000000004011c4 <+208>:   add    $0x8,%rax
-   0x00000000004011c8 <+212>:   cmp    %rsi,%rax
+   ;store each int into a node, 1st int ->node1, 2nd int ->node2, the node number corresponds the same value of the converted input
+   
+   
+   0x00000000004011ab <+183>:   mov    0x20(%rsp),%rbx	;	rbx = 1st int node number
+   0x00000000004011b0 <+188>:   lea    0x28(%rsp),%rax	;	rax = 2nd int node number
+   0x00000000004011b5 <+193>:   lea    0x50(%rsp),%rsi	;end node
+   0x00000000004011ba <+198>:   mov    %rbx,%rcx		;rcx = rbx = 2nd int node
+   
+   0x00000000004011bd <+201>:   mov    (%rax),%rdx		;rdx = value at node 2nd number 2, to rdx
+   0x00000000004011c0 <+204>:   mov    %rdx,0x8(%rcx)	;rcx = rbx, load the value of 2
+   0x00000000004011c4 <+208>:   add    $0x8,%rax		;rax increase by 1 byte
+   0x00000000004011c8 <+212>:   cmp    %rsi,%rax		;
    0x00000000004011cb <+215>:   je     0x4011d2 <phase_6+222>
-   0x00000000004011cd <+217>:   mov    %rdx,%rcx
+   0x00000000004011cd <+217>:   mov    %rdx,%rcx		;
    0x00000000004011d0 <+220>:   jmp    0x4011bd <phase_6+201>
-   0x00000000004011d2 <+222>:   movq   $0x0,0x8(%rdx)
-   0x00000000004011da <+230>:   mov    $0x5,%ebp
-   0x00000000004011df <+235>:   mov    0x8(%rbx),%rax
-   0x00000000004011e3 <+239>:   mov    (%rax),%eax
-   0x00000000004011e5 <+241>:   cmp    %eax,(%rbx)
-   0x00000000004011e7 <+243>:   jge    0x4011ee <phase_6+250>
+ ; change the ptr orders based on the storing order.  i think the purpose here is for the below steps, instead of using the rsp + 20/28, it can use pointer arithmatic to plus 8 since we reassign the order of the linked list.
+ 
+   0x00000000004011d2 <+222>:   movq   $0x0,0x8(%rdx) ;0 to the end?
+   0x00000000004011da <+230>:   mov    $0x5,%ebp	  ;rbp =  5
+   
+   0x00000000004011df <+235>:   mov    0x8(%rbx),%rax	;2nd node into rax
+   0x00000000004011e3 <+239>:   mov    (%rax),%eax		;eax = value
+   0x00000000004011e5 <+241>:   cmp    %eax,(%rbx)		;rbx is the first node, cmp the node value
+   0x00000000004011e7 <+243>:   jge    0x4011ee <phase_6+250>	;1st > 2nd, else explode bomb
    0x00000000004011e9 <+245>:   callq  0x40143a <explode_bomb>
-   0x00000000004011ee <+250>:   mov    0x8(%rbx),%rbx
-   0x00000000004011f2 <+254>:   sub    $0x1,%ebp
-   0x00000000004011f5 <+257>:   jne    0x4011df <phase_6+235>
-   0x00000000004011f7 <+259>:   add    $0x50,%rsp
+   0x00000000004011ee <+250>:   mov    0x8(%rbx),%rbx	;rbx index by 1, now go to 2nd
+   0x00000000004011f2 <+254>:   sub    $0x1,%ebp		;4
+   0x00000000004011f5 <+257>:   jne    0x4011df <phase_6+235>	; need zf = 0
+   ;basically compare the value in the node index, increase the node index by 8 every time, make sure the previous one is always greater, sort in descending order
+ 
+ ;(gdb) x/24wx 0x6032d0
+0x6032d0 <node1>:       0x0000014c =  332    0x00000001      0x006032e0      0x00000000
+0x6032e0 <node2>:       0x000000a8  = 168   0x00000002      0x006032f0      0x00000000
+0x6032f0 <node3>:       0x0000039c =924     0x00000003      0x00603300      0x00000000
+0x603300 <node4>:       0x000002b3  = 691   0x00000004      0x00603310      0x00000000
+0x603310 <node5>:       0x000001dd = 477    0x00000005      0x00603320      0x00000000
+0x603320 <node6>:       0x000001bb  = 443    0x00000006      0x00000000      0x00000000
+ 
+ ;descending order. 3->4->5->6->1->2, and because we revert it by subtracting from 7, have to revert back
+ 
+ ;4 3 2 1 6 5
+ 
+   0x00000000004011f7 <+259>:   add    $0x50,%rsp		;
    0x00000000004011fb <+263>:   pop    %rbx
    0x00000000004011fc <+264>:   pop    %rbp
    0x00000000004011fd <+265>:   pop    %r12
@@ -680,3 +702,13 @@ In x86-64 assembly, registers like `%eax` do not have a fixed memory address bec
 
 
 #### Ans:
+
+4 3 2 1 6 5
+
+![image-20240607022420435](CSAPP.assets/image-20240607022420435.png) let's goooo
+
+
+
+## Lab3
+
+ 
