@@ -1,0 +1,1147 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../OS/">
+      
+      
+        <link rel="next" href="../Web%20Notes/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>OS Lab - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#os-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OS Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AWS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced_Algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fundamentals of Backend Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CICD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSAPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP - Computer System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    OS Lab
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    OS Lab
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab1-xv6-and-unix-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab1: Xv6 and Unix utilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab2-system-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab2: system calls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab3-page-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab3: page tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab3: page tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-up-system-calls-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed up system calls (easy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-a-page-table-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print a page table (easy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-which-pages-have-been-accessed-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting which pages have been accessed (hard)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitmask-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitmask data structure:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-byte-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation of Byte Pointer:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explanation of Byte Pointer:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-byte-pointer-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example of Byte Pointer Usage:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-a-byte-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use a Byte Pointer?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab4-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab4: traps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Web%20Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab1-xv6-and-unix-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab1: Xv6 and Unix utilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab2-system-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab2: system calls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab3-page-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab3: page tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab3: page tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-up-system-calls-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed up system calls (easy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-a-page-table-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Print a page table (easy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-which-pages-have-been-accessed-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting which pages have been accessed (hard)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitmask-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitmask data structure:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-byte-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation of Byte Pointer:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explanation of Byte Pointer:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-byte-pointer-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example of Byte Pointer Usage:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-a-byte-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use a Byte Pointer?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab4-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab4: traps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="os-lab">OS Lab</h1>
+<h2 id="lab1-xv6-and-unix-utilities">Lab1: Xv6 and Unix utilities</h2>
+<h2 id="lab2-system-calls">Lab2: system calls</h2>
+<h2 id="lab3-page-tables">Lab3: page tables</h2>
+<p>The lab manual can be found here.https://pdos.csail.mit.edu/6.828/2021/labs/pgtbl.html</p>
+<h3 id="speed-up-system-calls-easy">Speed up system calls (<a href="https://pdos.csail.mit.edu/6.828/2021/labs/guidance.html">easy</a>)</h3>
+<p>Purpose: speed up certain system calls by sharing data in a read-only region between user space and the kernel. This task is to map one read-only page at USYSCALL( a virtual address defined in memlayout.h). At the start of this page, store a <code>struct usyscall</code> (also defined in <code>memlayout.h</code>), and initialize it to store the PID of the current process.</p>
+<pre><code class="language-c">//proc.h
+struct proc {
+  struct spinlock lock;
+
+  // p-&gt;lock must be held when using these:
+  enum procstate state;        // Process state
+  void *chan;                  // If non-zero, sleeping on chan
+  int killed;                  // If non-zero, have been killed
+  int xstate;                  // Exit status to be returned to parent's wait
+  int pid;                     // Process ID
+
+  // wait_lock must be held when using this:
+  struct proc *parent;         // Parent process
+
+  // these are private to the process, so p-&gt;lock need not be held.
+  uint64 kstack;               // Virtual address of kernel stack
+  uint64 sz;                   // Size of process memory (bytes)
+  pagetable_t pagetable;       // User page table
+  struct trapframe *trapframe; // data page for trampoline.S
+  struct context context;      // swtch() here to run process
+
+  struct file *ofile[NOFILE];  // Open files
+  struct inode *cwd;           // Current directory
+  char name[16];               // Process name (debugging)
+  // add the struct to store the shared page table
+  struct usyscall *usyscall;   //get pid
+};
+
+//proc.c
+static struct proc*
+allocproc(void)
+{
+  struct proc *p;
+
+  for(p = proc; p &lt; &amp;proc[NPROC]; p++) {
+    acquire(&amp;p-&gt;lock);
+    if(p-&gt;state == UNUSED) {
+      goto found;
+    } else {
+      release(&amp;p-&gt;lock);
+    }
+  }
+  return 0;
+
+found:
+  p-&gt;pid = allocpid();
+  p-&gt;state = USED;
+
+
+  // Allocate a trapframe page.
+  if((p-&gt;trapframe = (struct trapframe *)kalloc()) == 0){
+    freeproc(p);
+    release(&amp;p-&gt;lock);
+    return 0;
+  }
+  //Allocate a USYSCALL page, my implementation    
+  if((p-&gt;usyscall = (struct usyscall *)kalloc()) == 0){
+    freeproc(p);
+    release(&amp;p-&gt;lock);
+    return 0;
+  }
+  //share the pid between userspace and the kernel
+  p-&gt;usyscall-&gt;pid = p-&gt;pid;
+  // An empty user page table.
+  p-&gt;pagetable = proc_pagetable(p);
+  if(p-&gt;pagetable == 0){
+    freeproc(p);
+    release(&amp;p-&gt;lock);
+    return 0;
+  }
+
+  // Set up new context to start executing at forkret,
+  // which returns to user space.
+  memset(&amp;p-&gt;context, 0, sizeof(p-&gt;context));
+  p-&gt;context.ra = (uint64)forkret;
+  p-&gt;context.sp = p-&gt;kstack + PGSIZE;
+
+  return p;
+}
+
+
+// Create a user page table for a given process,
+// with no user memory, but with trampoline pages.
+pagetable_t
+proc_pagetable(struct proc *p)
+{
+  pagetable_t pagetable;
+
+  // An empty page table.
+  pagetable = uvmcreate();
+  if(pagetable == 0)
+    return 0;
+
+  // map the trampoline code (for system call return)
+  // at the highest user virtual address.
+  // only the supervisor uses it, on the way
+  // to/from user space, so not PTE_U.
+  if(mappages(pagetable, TRAMPOLINE, PGSIZE,
+              (uint64)trampoline, PTE_R | PTE_X) &lt; 0){
+    uvmfree(pagetable, 0);
+    return 0;
+  }
+
+  // map the trapframe just below TRAMPOLINE, for trampoline.S.
+  if(mappages(pagetable, TRAPFRAME, PGSIZE,
+              (uint64)(p-&gt;trapframe), PTE_R | PTE_W) &lt; 0){
+    uvmunmap(pagetable, TRAMPOLINE, 1, 0);
+    uvmfree(pagetable, 0);
+    return 0;
+  }
+
+  //create a page for usyscall and map with READ only and also allow it to be accessed by the USER.
+  if(mappages(pagetable, USYSCALL, PGSIZE,
+              (uint64)(p-&gt;usyscall), PTE_R | PTE_U) &lt; 0){
+    uvmunmap(pagetable, TRAMPOLINE, 1, 0);
+    uvmunmap(pagetable, TRAPFRAME, 1, 0);
+    uvmfree(pagetable, 0);
+    return 0;
+  }
+
+  return pagetable;
+}
+
+// Don't forget to free the leaf of the USYSCALL page, else it will cause a leaf panic error
+// Free a process's page table, and free the
+// physical memory it refers to.
+void
+proc_freepagetable(pagetable_t pagetable, uint64 sz)
+{
+  uvmunmap(pagetable, TRAMPOLINE, 1, 0);
+  uvmunmap(pagetable, TRAPFRAME, 1, 0);
+  uvmunmap(pagetable, USYSCALL, 1, 0);
+  uvmfree(pagetable, sz);
+}
+</code></pre>
+<h3 id="print-a-page-table-easy">Print a page table (<a href="https://pdos.csail.mit.edu/6.828/2021/labs/guidance.html">easy</a>)</h3>
+<p>Purpose: Print the contents of a page table</p>
+<p>Define a function called <code>vmprint()</code>. It should take a <code>pagetable_t</code> argument, and print that pagetable in the format described below. Insert <code>if(p-&gt;pid==1) vmprint(p-&gt;pagetable)</code> in exec.c just before the <code>return argc</code>, to print the first process's page table. You receive full credit for this part of the lab if you pass the <code>pte printout</code> test of <code>make grade</code>.</p>
+<pre><code class="language-c">
+
+//vm.c
+//use recursion to print the pte on page tables
+void vmprint(pagetable_t pagetable,int r)
+{
+  // r =0. first r
+  char *format =&quot;&quot;;
+  if(r == 0){
+    pte_t pa = (uint64)pagetable;
+    printf(&quot;page table %p\n&quot;,pa);
+    format = &quot;..&quot;;
+    r++;
+  }else if(r ==1){
+    format = &quot;.. ..&quot;;
+    r++;
+  }else if(r==2){
+    format = &quot;.. .. ..&quot;;
+    r++;
+  }
+
+  for(int i=0;i&lt;512;i++){
+    pte_t pte = pagetable[i];
+    //if there is a valid page
+    if((pte &amp; PTE_V) &amp;&amp; (pte &amp; (PTE_R|PTE_W|PTE_X)) == 0){
+      // this PTE points to a lower-level page table.
+
+      //PTE2PA will get the next page PA address
+      uint64 child = PTE2PA(pte);
+      printf(&quot;%s%d: pte %p pa %p\n&quot;,format,i,pte,child);
+      // printf(&quot;child %p\n&quot;,child);
+      vmprint((pagetable_t)child,r);
+    } else if(pte &amp; PTE_V){ //these are the leaf of the page
+      uint64 child = PTE2PA(pte);
+      printf(&quot;%s%d: pte %p pa %p\n&quot;,format,i,pte,child);
+
+    }
+  }
+
+}
+
+
+//exec.c
+//add this code in int exec(char *path, char **argv) before the return argument to allow it to print the page table when the pid is 1
+  if(p-&gt;pid ==1) vmprint(p-&gt;pagetable,0);
+
+</code></pre>
+<h3 id="detecting-which-pages-have-been-accessed-hard">Detecting which pages have been accessed (<a href="https://pdos.csail.mit.edu/6.828/2021/labs/guidance.html">hard</a>)</h3>
+<p>Purpose: Based on the input arguments, determine which pages have been accessed(read or write). </p>
+<p>Your job is to implement <code>pgaccess()</code>, a system call that reports which pages have been accessed. The system call takes three arguments. First, it takes the starting virtual address of the first user page to check. Second, it takes the number of pages to check. Finally, it takes a user address to a buffer to store the results into a bitmask (a datastructure that uses one bit per page and where the first page corresponds to the least significant bit). You will receive full credit for this part of the lab if the <code>pgaccess</code> test case passes when running <code>pgtbltest</code>.</p>
+<p><img alt="image-20240820010655487" src="../OSlab.assets/image-20240820010655487.png" /></p>
+<pre><code class="language-c">//riscv.h
+#define PTE_A (1L &lt;&lt; 6) //Access Bit
+
+//sysproc.c
+
+#ifdef LAB_PGTBL
+int
+sys_pgaccess(void)
+{
+  //parse arugments
+  uint64 va;
+  int num;
+  uint64 buffer; //buffer to store the result in bitmask ds
+  int ans = 0;
+  if(argaddr(0,&amp;va) &lt; 0) return -1;
+  if(argint(1,&amp;num)&lt;0) return -1;
+  if(argaddr(2,&amp;buffer)&lt;0) return -1;
+
+  struct proc *p = myproc(); //get the current process status
+  pagetable_t pagetable = p-&gt;pagetable; //the user page table
+
+  for(int i=0;i&lt;num;i++){
+    pte_t *pte;
+    pte = walk(pagetable,va+ (i * PGSIZE),0);
+
+    if((pte != 0) &amp;&amp; (*pte &amp; PTE_A)){
+      ans = ans | (1 &lt;&lt; i);
+      *pte = *pte ^ PTE_A;
+    }
+  }
+  //copy the answer from kernel to the user space, stored in the third input argument ans,
+    //copy byte by byte
+  if(copyout(pagetable,buffer,(char *)&amp;ans,sizeof(int)) &lt; 0){
+    return -1;
+  }
+  return 0;
+//pgaccess(buf, 32, &amp;abits)
+
+}
+#endif
+
+</code></pre>
+<h3 id="bitmask-data-structure">Bitmask data structure:</h3>
+<p>Bitmask Basics:</p>
+<ul>
+<li><strong>Representation</strong>: A bitmask is typically represented as an integer where each bit corresponds to a specific option, flag, or element.</li>
+<li>For example, an 8-bit bitmask can represent up to 8 different flags or states, with each bit in the byte being either <code>0</code> (off/false) or <code>1</code> (on/true).</li>
+<li><strong>Efficiency</strong>: Bitmasks are efficient because they allow you to represent multiple states or flags within a single integer, using very little memory (e.g., 1 byte can store 8 flags).</li>
+<li><strong>Common Uses</strong>:</li>
+<li><strong>Flags</strong>: In many programming languages, bitmasks are used to store flags, where each bit in the bitmask represents a different flag.</li>
+<li><strong>Permissions</strong>: Bitmasks are often used to store permission bits, where each bit represents a different permission (e.g., read, write, execute).</li>
+<li><strong>Presence of Elements</strong>: In algorithms, bitmasks can be used to represent whether certain elements or conditions are present.</li>
+</ul>
+<h3 id="explanation-of-byte-pointer">Explanation of Byte Pointer:</h3>
+<ul>
+<li>
+<p><strong>Pointer Basics</strong>:</p>
+</li>
+<li>
+<p>A pointer is a variable that holds the memory address of another variable.</p>
+</li>
+<li>The type of the pointer determines how the memory is accessed. For example, an <code>int*</code> pointer is expected to point to an <code>int</code> and thus access 4 bytes of memory (on most systems), whereas a <code>char*</code> pointer (byte pointer) accesses 1 byte of memory.</li>
+<li><strong>Byte Pointer (<code>char\*</code>)</strong>:</li>
+<li>A <code>char*</code> or <code>unsigned char*</code> pointer is often referred to as a byte pointer because <code>char</code> typically represents a single byte (8 bits) of data.</li>
+<li>With a byte pointer, you can perform fine-grained memory operations, such as accessing and modifying memory byte by byte.</li>
+</ul>
+<h4 id="example-of-byte-pointer-usage">Example of Byte Pointer Usage:</h4>
+<p>Consider a scenario where you have an integer value, but you want to access or manipulate its bytes individually:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 0x12345678;   // A 4-byte integer
+    char *byte_ptr = (char*)&amp;num;  // Cast the address of num to a byte pointer
+
+    // Access and print each byte of the integer
+    for(int i = 0; i &lt; sizeof(int); i++) {
+        printf(&quot;Byte %d: 0x%x\n&quot;, i, byte_ptr[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li>Memory Representation</li>
+<li><code>num</code> is a 4-byte integer. Its value <code>0x12345678</code> will be stored in memory as four bytes: <code>0x12</code>, <code>0x34</code>, <code>0x56</code>, <code>0x78</code>.</li>
+<li>Pointer Cast</li>
+<li><code>char* byte_ptr = (char*)#</code> converts the address of <code>num</code> (which is an <code>int*</code>) to a <code>char*</code>, allowing you to access the individual bytes of the integer.</li>
+<li>Byte-by-Byte Access</li>
+<li><code>byte_ptr[i]</code> accesses the <code>i</code>-th byte of <code>num</code>. Since <code>byte_ptr</code> is a <code>char*</code>, <code>byte_ptr[i]</code> accesses the memory one byte at a time.</li>
+</ul>
+<h4 id="output">Output:</h4>
+<pre><code class="language-c">Byte 0: 0x78
+Byte 1: 0x56
+Byte 2: 0x34
+Byte 3: 0x12
+</code></pre>
+<h4 id="why-use-a-byte-pointer">Why Use a Byte Pointer?</h4>
+<ul>
+<li><strong>Memory Manipulation</strong>: Byte pointers are useful when you need to manipulate data at a low level, such as copying raw memory, accessing specific bytes in a larger data structure, or working with binary data formats.</li>
+<li><strong>Typecasting</strong>: Often, you might cast a higher-level pointer (e.g., <code>int*</code>, <code>float*</code>) to a <code>char*</code> to inspect or manipulate its bytes, as seen in the example above.</li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>I enhance some interesting things that i never notice before,  <code>copyout(pagetable,buffer,(char *)&amp;ans,sizeof(int))</code> this function is actually copying the data byte by byte, and it is a really useful technique if we want to write a generic function that accept different data types arguments and perform the copy. Idea is in C, the data type will define how many bytes of memory to read, let's say if the data type is int *, then it will read 4 bytes contiguous memory blocks. And since char * only has the one byte(lowest), it will be safe to copy those memory blocks byte by byte and later cast those address to the original data type.</p>
+<h2 id="lab4-traps">Lab4: traps</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>
