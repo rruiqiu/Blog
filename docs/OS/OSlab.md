@@ -1,12 +1,6 @@
 # OS Lab
 
-
-
-
-
 ## Lab1: Xv6 and Unix utilities
-
-
 
 ## Lab2: system calls
 
@@ -74,7 +68,7 @@ found:
     release(&p->lock);
     return 0;
   }
-  //Allocate a USYSCALL page, my implementation    
+  //Allocate a USYSCALL page, my implementation
   if((p->usyscall = (struct usyscall *)kalloc()) == 0){
     freeproc(p);
     release(&p->lock);
@@ -155,8 +149,6 @@ proc_freepagetable(pagetable_t pagetable, uint64 sz)
 }
 ```
 
-
-
 ### Print a page table ([easy](https://pdos.csail.mit.edu/6.828/2021/labs/guidance.html))
 
 Purpose: Print the contents of a page table
@@ -190,7 +182,7 @@ void vmprint(pagetable_t pagetable,int r)
     //if there is a valid page
     if((pte & PTE_V) && (pte & (PTE_R|PTE_W|PTE_X)) == 0){
       // this PTE points to a lower-level page table.
-      
+
       //PTE2PA will get the next page PA address
       uint64 child = PTE2PA(pte);
       printf("%s%d: pte %p pa %p\n",format,i,pte,child);
@@ -202,7 +194,7 @@ void vmprint(pagetable_t pagetable,int r)
 
     }
   }
-  
+
 }
 
 
@@ -212,15 +204,13 @@ void vmprint(pagetable_t pagetable,int r)
 
 ```
 
-
-
 ### Detecting which pages have been accessed ([hard](https://pdos.csail.mit.edu/6.828/2021/labs/guidance.html))
 
-Purpose: Based on the input arguments, determine which pages have been accessed(read or write). 
+Purpose: Based on the input arguments, determine which pages have been accessed(read or write).
 
 Your job is to implement `pgaccess()`, a system call that reports which pages have been accessed. The system call takes three arguments. First, it takes the starting virtual address of the first user page to check. Second, it takes the number of pages to check. Finally, it takes a user address to a buffer to store the results into a bitmask (a datastructure that uses one bit per page and where the first page corresponds to the least significant bit). You will receive full credit for this part of the lab if the `pgaccess` test case passes when running `pgtbltest`.
 
-![image-20240820010655487](OSlab.assets/image-20240820010655487.png)
+![image-20240820010655487](./OSlab.assets/image-20240820010655487.png)
 
 ```c
 //riscv.h
@@ -240,7 +230,7 @@ sys_pgaccess(void)
   if(argaddr(0,&va) < 0) return -1;
   if(argint(1,&num)<0) return -1;
   if(argaddr(2,&buffer)<0) return -1;
-  
+
   struct proc *p = myproc(); //get the current process status
   pagetable_t pagetable = p->pagetable; //the user page table
 
@@ -266,10 +256,6 @@ sys_pgaccess(void)
 
 ```
 
-
-
-
-
 ### Bitmask data structure:
 
 Bitmask Basics:
@@ -288,10 +274,10 @@ Bitmask Basics:
 
   - A pointer is a variable that holds the memory address of another variable.
   - The type of the pointer determines how the memory is accessed. For example, an `int*` pointer is expected to point to an `int` and thus access 4 bytes of memory (on most systems), whereas a `char*` pointer (byte pointer) accesses 1 byte of memory.
+
 - **Byte Pointer (`char\*`)**:
   - A `char*` or `unsigned char*` pointer is often referred to as a byte pointer because `char` typically represents a single byte (8 bits) of data.
   - With a byte pointer, you can perform fine-grained memory operations, such as accessing and modifying memory byte by byte.
-  
 
 #### Example of Byte Pointer Usage:
 
@@ -336,10 +322,8 @@ Byte 3: 0x12
 - **Memory Manipulation**: Byte pointers are useful when you need to manipulate data at a low level, such as copying raw memory, accessing specific bytes in a larger data structure, or working with binary data formats.
 - **Typecasting**: Often, you might cast a higher-level pointer (e.g., `int*`, `float*`) to a `char*` to inspect or manipulate its bytes, as seen in the example above.
 
-
-
 ### Summary
 
-I enhance some interesting things that i never notice before,  `copyout(pagetable,buffer,(char *)&ans,sizeof(int))` this function is actually copying the data byte by byte, and it is a really useful technique if we want to write a generic function that accept different data types arguments and perform the copy. Idea is in C, the data type will define how many bytes of memory to read, let's say if the data type is int *, then it will read 4 bytes contiguous memory blocks. And since char * only has the one byte(lowest), it will be safe to copy those memory blocks byte by byte and later cast those address to the original data type.
+I enhance some interesting things that i never notice before, `copyout(pagetable,buffer,(char *)&ans,sizeof(int))` this function is actually copying the data byte by byte, and it is a really useful technique if we want to write a generic function that accept different data types arguments and perform the copy. Idea is in C, the data type will define how many bytes of memory to read, let's say if the data type is int _, then it will read 4 bytes contiguous memory blocks. And since char _ only has the one byte(lowest), it will be safe to copy those memory blocks byte by byte and later cast those address to the original data type.
 
 ## Lab4: traps
