@@ -1,6 +1,6 @@
-# Welcome to MkDocs
+# Intro
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This blog is built by using [mkdocs.org](https://www.mkdocs.org). Unfortunately I found that Notion is a better note tracker than Typora so this blog may not get updated frequently. 
 
 ## Commands
 
@@ -15,3 +15,4 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
