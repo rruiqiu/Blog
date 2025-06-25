@@ -1,20 +1,21 @@
-site_name: Richard's Notes
+site_name: NoteBooks
 
 theme:
   name: material
   logo: assets/logo.svg
+  favicon: assets/logo.svg
   palette:
     - scheme: default
       primary: teal
       accent: indigo
       toggle:
-        icon: material/weather-night
+        icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/weather-sunny
+        icon: material/toggle-switch-outline
         name: Switch to light mode
   features:
     - navigation.tabs
