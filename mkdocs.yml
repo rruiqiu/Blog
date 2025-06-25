@@ -2,21 +2,32 @@ site_name: Richard's Notes
 
 theme:
   name: material
+  logo: assets/logo.svg
   palette:
     - scheme: default
-      primary: indigo
+      primary: teal
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
     - navigation.tabs
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 nav:
   - Home: index.md
