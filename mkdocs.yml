@@ -33,10 +33,25 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Neetcode 150:
+      - Arrays & Hashing: Neetcode 150/Arrays & Hashing.md
+      - Two Pointers: Neetcode 150/Two Pointers.md
+      - Sliding Window: Neetcode 150/Sliding Window.md
+      - Stack: Neetcode 150/Stack.md
       - Binary Search: Neetcode 150/Binary Search.md
       - Linked List: Neetcode 150/Linked List.md
-      - Stack: Neetcode 150/Stack.md
       - Trees: Neetcode 150/Trees.md
+      - Heap / Priority Queue: Neetcode 150/Priority Queue(Heap).md
+      - Backtracking: Neetcode 150/Backtracking.md
+      - Tries: Neetcode 150/Tries.md
+      - Graphs: Neetcode 150/Graphs.md
+      - Advanced Graphs: Neetcode 150/Advanced Graphs.md
+      - 1-D Dynamic Programming: Neetcode 150/1-D Dynamic Programming.md
+      - 2-D Dynamic Programming: Neetcode 150/2-D Dynamic Programming.md
+      - Greedy: Neetcode 150/Greedy.md
+      - Intervals: Neetcode 150/Intervals.md
+      - Math & Geometry: Neetcode 150/Math & Geometry.md
+      - Bit Manipulation: Neetcode 150/Bit Manipulation.md
+
   - Full Stack:
       - Backend: Full Stack/Backend.md
       - Web Notes: Full Stack/Web Notes.md
