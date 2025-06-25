@@ -1,0 +1,1622 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Binary%20Search/">
+      
+      
+        <link rel="next" href="../Stack/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Linked List - Richard's Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reverse-linked-list" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Richard&#39;s Notes" class="md-header__button md-logo" aria-label="Richard's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Richard's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linked List
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Binary%20Search/" class="md-tabs__link">
+          
+  
+  Neetcode 150
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Full%20Stack/Backend/" class="md-tabs__link">
+          
+  
+  Full Stack
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Systems/OS/" class="md-tabs__link">
+          
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../nginx/" class="md-tabs__link">
+        
+  
+    
+  
+  nginx
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Richard&#39;s Notes" class="md-nav__button md-logo" aria-label="Richard's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Richard's Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Neetcode 150
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Neetcode 150
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Binary%20Search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binary Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Linked List
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Linked List
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-two-sorted-linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge Two Sorted Linked Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-cycle-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked List Cycle Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reorder-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reorder Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-node-from-end-of-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove Node From End of Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-linked-list-with-random-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy Linked List with Random Pointer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-two-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Two Numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-the-duplicate-number-floyds-cycle-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find the Duplicate Number - Floyd's Cycle Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lru-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      LRU cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-k-sorted-linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge K Sorted Linked Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-nodes-in-k-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Nodes in K-Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-pointers-slowfast" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟩 Two Pointers (Slow/Fast)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reversing-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟨 Reversing a Linked List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dummy-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟦 Dummy Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟧 Hash Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority-queue-divide-and-conquer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟥 Priority Queue / Divide and Conquer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doubly-linked-list-hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟨 Doubly Linked List + HashMap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Trees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Full Stack
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Full Stack
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Full%20Stack/Backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Full%20Stack/Web%20Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/OS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/OSlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/CSAPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-two-sorted-linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge Two Sorted Linked Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-cycle-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked List Cycle Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reorder-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reorder Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-node-from-end-of-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove Node From End of Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-linked-list-with-random-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy Linked List with Random Pointer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-two-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Two Numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-the-duplicate-number-floyds-cycle-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find the Duplicate Number - Floyd's Cycle Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lru-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      LRU cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-k-sorted-linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge K Sorted Linked Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-nodes-in-k-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Nodes in K-Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-pointers-slowfast" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟩 Two Pointers (Slow/Fast)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reversing-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟨 Reversing a Linked List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dummy-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟦 Dummy Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟧 Hash Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority-queue-divide-and-conquer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟥 Priority Queue / Divide and Conquer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doubly-linked-list-hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟨 Doubly Linked List + HashMap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Linked List</h1>
+
+<h2 id="reverse-linked-list">Reverse Linked List</h2>
+<p>Main idea is about switching the direction between 2 nodes by using 2 variables, similar to the swapping algorithm, keep a variable of the next one and switching the prev and curr places, then finally reassigning.</p>
+<p><img alt="image-20250622000839488" src="../Linked%20List.assets/image-20250622000839488.png" /></p>
+<pre><code class="language-python">class Solution:
+    def reverseList(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        prev, curr = None, head
+
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        return prev
+</code></pre>
+<h2 id="merge-two-sorted-linked-lists">Merge Two Sorted Linked Lists</h2>
+<p>Notice that linked list is stored in memory, so reassigning the order wouldn't need extra space, get confused for the in-place changing at first.</p>
+<pre><code class="language-python">class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        dummy = tail = ListNode()
+        while list1 and list2:
+            if list2.val &lt;= list1.val:
+                tail.next = list2
+                list2 = list2.next
+            else:
+                tail.next = list1
+                list1 = list1.next
+            tail = tail.next
+
+        if list1:
+            tail.next = list1
+        elif list2:
+            tail.next = list2
+
+        return dummy.next
+</code></pre>
+<h2 id="linked-list-cycle-detection">Linked List Cycle Detection</h2>
+<p>A good way to remember is that start at the same position, and fast pointer moves by 2. So we want to check that fast and fast.next if it's null, cuz it would throw an error if we indexing the null since we are incrementing the fast pointer by 2 then we can compare with the slow and fast.</p>
+<pre><code class="language-python">class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -&gt; bool:
+        # 2 pointers, a cycle would never reach the end
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+
+        return False
+</code></pre>
+<h2 id="reorder-linked-list">Reorder Linked List</h2>
+<p>We can find that is about moving the left and right pointer, the issue is that for linked list we can't easily get the prev list, we can solve this by reversing the second half then using the 2 pointers.</p>
+<p><img alt="image-20250622155228004" src="../Linked%20List.assets/image-20250622155228004.png" /></p>
+<p>An efficient way to find the mid position is to use a slow and fast pointer.</p>
+<p><img alt="image-20250622155343958" src="../Linked%20List.assets/image-20250622155343958.png" /></p>
+<p>https://leetcode.com/problems/middle-of-the-linked-list/</p>
+<pre><code class="language-python">class Solution:
+    def middleNode(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+</code></pre>
+<p><img alt="image-20250622163550339" src="../Linked%20List.assets/image-20250622163550339.png" /></p>
+<p>Notice that how we use slow.next = None to break the linked list into half.</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -&gt; None:
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        prev, curr = None, slow.next # curr now holds a reference to the node *after* slow
+        slow.next = None # breaks the first half of the list by setting slow.next to None
+        #reverse the linked list
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        first, second = head, prev
+        while second:
+            tmp1, tmp2 = first.next, second.next
+            first.next = second
+            second.next = tmp1
+            first, second = tmp1, tmp2
+
+</code></pre>
+<h2 id="remove-node-from-end-of-linked-list">Remove Node From End of Linked List</h2>
+<p><img alt="image-20250622184934281" src="../Linked%20List.assets/image-20250622184934281.png" /></p>
+<pre><code class="language-python">class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -&gt; Optional[ListNode]:
+        # two pointers with n incrementing space to know the end
+        # dummy = head
+        dummy = slow = ListNode(next = head)
+        fast = head
+        for _ in range(n):
+            fast = fast.next
+
+        while fast:
+            slow = slow.next
+            fast = fast.next
+
+        # remove = slow.next
+        # slow.next = remove.next
+        slow.next = slow.next.next # another way to delete
+
+        return dummy.next
+</code></pre>
+<h2 id="copy-linked-list-with-random-pointer">Copy Linked List with Random Pointer</h2>
+<p>Core idea is that we want to construct a hashmap that stores each node as the key, and also create a corresponding newNode for each node. So that on the next iteration we can connect the hashmap value based on the current node.</p>
+<pre><code class="language-python">class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -&gt; 'Optional[Node]':
+        if head is None:
+            return None
+
+        tail = head
+        table = {None: None} # key: node, value: newNode
+
+        while tail:
+            table[tail] = Node(tail.val)
+            tail = tail.next
+        tail = head
+
+        while tail:
+            table[tail].next = table[tail.next]
+            table[tail].random = table[tail.random]
+            tail = tail.next
+
+        return table[head]
+</code></pre>
+<p>We can also optimize this to O(1) auxiliary space.</p>
+<p>Step1:</p>
+<p><img alt="image-20250623001804451" src="../Linked%20List.assets/image-20250623001804451.png" /></p>
+<p>Step2:</p>
+<p><img alt="image-20250623001821356" src="../Linked%20List.assets/image-20250623001821356.png" /></p>
+<p>Step3:</p>
+<p><img alt="image-20250623001830587" src="../Linked%20List.assets/image-20250623001830587.png" /></p>
+<pre><code class="language-python">class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -&gt; 'Optional[Node]':
+        if not head:
+            return None
+
+        node = head
+        while node:
+            nxt = node.next
+            node.next = Node(node.val) # Create a clone
+            node.next.next = nxt
+            node = nxt
+
+        # Assign the random
+        node = head
+        while node:
+            random_node = node.random
+            if random_node:
+                node.next.random = random_node.next
+            node = node.next.next
+
+        # Now reconstructing the original list and also store the new list
+        node = head
+        copy_node = clone = head.next
+        while node:
+            node.next = node.next.next
+            clone.next = (clone.next.next if clone.next else None)
+            node = node.next
+            clone = clone.next
+
+        return copy_node
+</code></pre>
+<h2 id="add-two-numbers">Add Two Numbers</h2>
+<p>Not too many tricks, just be careful to handle the length and carry.</p>
+<pre><code class="language-python">class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        dummy = ListNode()
+        cur = dummy
+
+        carry = 0
+        while l1 or l2 or carry:
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+
+            # new digit
+            val = v1 + v2 + carry
+            carry = val // 10
+            val = val % 10
+            cur.next = ListNode(val)
+
+            # update ptrs
+            cur = cur.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        return dummy.next
+</code></pre>
+<h2 id="find-the-duplicate-number-floyds-cycle-detection">Find the Duplicate Number - Floyd's Cycle Detection</h2>
+<p>1) Linked List Cycle
+2) Floyd's</p>
+<p>2 iterations: </p>
+<p>1st first find the start and slow pointer</p>
+<p><img alt="image-20250623024140673" src="../Linked%20List.assets/image-20250623024140673.png" /></p>
+<p>2nd slow2 start at the beginning, once the slow and slow2 reach, it means the duplicate is found.</p>
+<p><img alt="image-20250623024627344" src="../Linked%20List.assets/image-20250623024627344.png" /></p>
+<pre><code class="language-python">class Solution:
+    def findDuplicate(self, nums: List[int]) -&gt; int:
+        slow, fast = 0, 0
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+
+        slow2 = 0
+        while True:
+            slow = nums[slow]
+            slow2 = nums[slow2]
+            if slow == slow2:
+                return slow
+</code></pre>
+<p>https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/</p>
+<p>Find the Starting Node of a Cycle in a Linked List</p>
+<p>To find the starting node of a cycle in a linked list, follow the steps below:</p>
+<blockquote>
+<ul>
+<li>Using above algorithm<a href="https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/"> </a>we can find the <strong><em>*meeting point (if cycle exists)*</em></strong> where the slow and fast pointers <strong><em>*intersect*</em></strong> inside the cycle.</li>
+<li>After detecting the cycle, reset one pointer <strong><em>*(slow)*</em></strong> to the <strong><em>*head*</em></strong> of the list. Keep the other pointer <strong><em>*(fast)*</em></strong> at the meeting point.</li>
+<li>Move both pointers <strong><em>*one s*</em></strong>tep at a time. The node where they meet again is the <strong><em>*start*</em></strong> of the cycle.</li>
+</ul>
+</blockquote>
+<h2 id="lru-cache">LRU cache</h2>
+<p>Doubly Linked List, practice, practice and practice ...</p>
+<pre><code class="language-python">class Node:
+    def __init__(self, key=0, val=0, prev=None, next=None):
+        self.key = key
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = {}  # key: int -&gt; Node
+        self.start = Node()  # dummy head
+        self.tail = Node()   # dummy tail
+        self.start.next = self.tail
+        self.tail.prev = self.start
+
+    def get(self, key: int) -&gt; int:
+        if key in self.cache:
+            node = self.cache[key]
+            self._remove_node(node)
+            self._add_node(node)
+            return node.val
+        return -1
+
+    def put(self, key: int, value: int) -&gt; None:
+        if key in self.cache:
+            node = self.cache[key]
+            node.val = value
+            self._remove_node(node)
+            self._add_node(node)
+        else:
+            if len(self.cache) &gt;= self.capacity:
+                lru = self.tail.prev
+                self._remove_node(lru)
+                del self.cache[lru.key]
+            new_node = Node(key, value)
+            self._add_node(new_node)
+            self.cache[key] = new_node
+
+    def _add_node(self, node):
+        # Always add to the front (right after dummy head)
+        node.prev = self.start
+        node.next = self.start.next
+        self.start.next.prev = node
+        self.start.next = node
+
+    def _remove_node(self, node):
+        # Detach from its neighbors
+        prev = node.prev
+        nxt = node.next
+        prev.next = nxt
+        nxt.prev = prev
+
+</code></pre>
+<h2 id="merge-k-sorted-linked-lists">Merge K Sorted Linked Lists</h2>
+<p>The core idea is we can separate this question from merge multiple linked lists to merge 2 linked lists per time and it will eventually result into a single list.  Time: O(n logk), Space(k), k is the length of the input lists</p>
+<p><img alt="image-20250624031526364" src="../Linked%20List.assets/image-20250624031526364.png" /></p>
+<pre><code class="language-python">class Solution:    
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -&gt; Optional[ListNode]:
+        # split the lists into 2 and merge every time and eventually it will converge to 1
+
+        if not lists:
+            return None
+
+        while len(lists) &gt; 1:
+            merged_lists = []
+            for i in range(0, len(lists), 2): # merge 2 lists each time
+                l1 = lists[i]
+                l2 = lists[i + 1] if i + 1 &lt; len(lists) else None # may out of bounds
+                merged_lists.append(self.mergeLists(l1, l2))
+            lists = merged_lists
+
+        return lists[0]
+
+    def mergeLists(self, l1, l2):
+        # Merge 2 lists and return the megered list
+        dummy = tail = ListNode()
+        while l1 and l2:
+            if l1.val &lt; l2.val:
+                tail.next = l1
+                l1 = l1.next
+            else:
+                tail.next = l2
+                l2 = l2.next
+            tail = tail.next
+        if l1:
+            tail.next = l1
+        if l2:
+            tail.next = l2
+        return dummy.next
+
+</code></pre>
+<h2 id="reverse-nodes-in-k-group">Reverse Nodes in K-Group</h2>
+<p>The main idea is that we can split this question into the version of reverse linked list by comparing the end node after k steps. But we need to be very careful on relinking the reverse nodes.</p>
+<p><img alt="image-20250624030627295" src="../Linked%20List.assets/image-20250624030627295.png" /></p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -&gt; Optional[ListNode]:
+        if not head:
+            return None
+
+        start = dummy = ListNode(next = head)
+
+        while True:
+            end_k = self.getReversePos(k, start)
+
+            if not end_k:
+                break
+            groupNext = end_k.next
+
+            prev, curr = end_k.next, start.next
+            # reverse linked lists
+            while curr != groupNext:
+                nxt = curr.next
+                curr.next = prev
+                prev = curr
+                curr = nxt
+            # complicated -&gt;
+            tmp = start.next # first node
+            start.next = end_k # the kth reverse node position
+            start = tmp # now the first node is pointing to the remaining linked list, we can use this as our start
+        return dummy.next
+
+    def getReversePos(self, k, l):
+        while l and k &gt; 0:
+            l = l.next
+            k -= 1
+        return l
+
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>After working through these linked list problems, several recurring <strong>techniques</strong> emerge, each with specific <strong>scenarios</strong> where they are most effective:</p>
+<h3 id="two-pointers-slowfast">🟩 Two Pointers (Slow/Fast)</h3>
+<ul>
+<li><strong>Finding the Middle Node</strong>
+   → Use slow and fast pointers. Fast moves 2 steps, slow moves 1. When fast reaches the end, slow is at the middle.
+   ⤷ <code>middleNode</code>, <code>reorderList</code></li>
+<li><strong>Cycle Detection</strong>
+   → Use the same pattern. If a cycle exists, slow and fast will eventually meet.
+   ⤷ <code>hasCycle</code>, <code>findDuplicate</code> (array-based cycle)</li>
+<li><strong>Finding Cycle Start Point</strong>
+   → After detecting a cycle, reset one pointer to head and move both 1 step at a time. Their meeting point is the start of the cycle.
+   ⤷ <code>findDuplicate</code> (Floyd's Tortoise &amp; Hare)</li>
+<li><strong>Finding K-th Node from End</strong>
+   → Move <code>fast</code> pointer <code>n</code> steps ahead, then move both <code>slow</code> and <code>fast</code> together. When <code>fast</code> reaches the end, <code>slow</code> is at the target.
+   ⤷ <code>removeNthFromEnd</code></li>
+</ul>
+<hr />
+<h3 id="reversing-a-linked-list">🟨 Reversing a Linked List</h3>
+<ul>
+<li><strong>Full List Reverse</strong>
+   → Use <code>prev</code>, <code>curr</code>, and <code>nxt</code> to reverse pointers.
+   ⤷ <code>reverseList</code></li>
+<li><strong>Reverse Partial (e.g., K-group)</strong>
+   → Apply the same logic within a group. First validate group size using pointer traversal, then reverse in-place.
+   ⤷ <code>reverseKGroup</code></li>
+<li><strong>Helper for Complex Operations</strong>
+   → Used in problems like <code>reorderList</code> to reverse the second half before merging.</li>
+</ul>
+<hr />
+<h3 id="dummy-node">🟦 Dummy Node</h3>
+<ul>
+<li><strong>Simplify Insert/Delete Operations</strong>
+   → Always use a dummy head when dealing with potential edge cases (e.g., inserting at head or removing head node).
+   ⤷ <code>mergeTwoLists</code>, <code>removeNthFromEnd</code>, <code>addTwoNumbers</code>, <code>mergeKLists</code></li>
+</ul>
+<hr />
+<h3 id="hash-map">🟧 Hash Map</h3>
+<ul>
+<li><strong>Track Correspondence Between Original and Copied Nodes</strong>
+   → Use when each node has more than just <code>.next</code> (e.g., random pointer).
+   ⤷ <code>copyRandomList</code> (O(n) space solution)</li>
+</ul>
+<hr />
+<h3 id="priority-queue-divide-and-conquer">🟥 Priority Queue / Divide and Conquer</h3>
+<ul>
+<li><strong>Merging K Sorted Lists</strong>
+   → Use min-heap for O(N log K) or pairwise divide-and-conquer merges.
+   ⤷ <code>mergeKLists</code></li>
+</ul>
+<hr />
+<h3 id="doubly-linked-list-hashmap">🟨 Doubly Linked List + HashMap</h3>
+<ul>
+<li><strong>LRU Cache</strong>
+   → Use a doubly linked list for ordering and hashmap for O(1) lookup and insert/remove.
+   ⤷ <code>LRUCache</code></li>
+</ul>
+<hr />
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li><strong>Linked List = Pointer Manipulation</strong> → Understand how to disconnect/reconnect nodes safely.</li>
+<li><strong>Patterns are Reusable</strong> → Nearly every complex linked list problem is a variation of a basic pattern.</li>
+<li>
+<p><strong>Space vs. Time Trade-offs</strong> → Know when to use extra space (e.g., HashMap) vs. clever pointer tricks (e.g., interleaving nodes in-place).</p>
+</li>
+<li>
+<p>ycle or locating duplicates when the input is constrained (e.g., values used as pointers).</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

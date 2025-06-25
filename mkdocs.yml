@@ -1,7 +1,35 @@
-site_name: My Docs
+site_name: Richard's Notes
 
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
 
-plugins:
-  - blog
+nav:
+  - Home: index.md
+  - Neetcode 150:
+      - Binary Search: Neetcode 150/Binary Search.md
+      - Linked List: Neetcode 150/Linked List.md
+      - Stack: Neetcode 150/Stack.md
+      - Trees: Neetcode 150/Trees.md
+  - Full Stack:
+      - Backend: Full Stack/Backend.md
+      - Web Notes: Full Stack/Web Notes.md
+      - nginx: Full Stack/nginx.md
+  - Systems:
+      - OS: Systems/OS.md
+      - OSlab: Systems/OSlab.md
+      - CSAPP: Systems/CSAPP.md
