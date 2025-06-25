@@ -53,6 +53,8 @@ nav:
       - Bit Manipulation: Neetcode 150/Bit Manipulation.md
 
   - Full Stack:
+      - React: Full Stack/React.md
+      - SQL: Full Stack/SQL.md
       - Backend: Full Stack/Backend.md
       - Web Notes: Full Stack/Web Notes.md
       - nginx: Full Stack/nginx.md

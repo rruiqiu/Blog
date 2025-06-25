@@ -207,7 +207,7 @@ class Solution:
         return dfs(root)
 ```
 
-## Lowest Common Ancestor in Binary Search Tree
+## * Lowest Common Ancestor in Binary Search Tree
 
 The DFS approach is straightforward and would take O(n) space, but we can further optimize into O(1) space.
 
@@ -248,3 +248,89 @@ class Solution:
             else:
                 return cur
 ```
+
+## Binary Tree Level Order Traversal
+
+```python
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # bfs on each q length, append the left right node
+        if not root:
+            return []
+        q = deque([root])
+        res = []
+        while q:
+            level = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(level)
+        return res
+```
+
+## Valid Binary Search Tree
+
+![image-20250625141045896](Trees.assets/image-20250625141045896.png)
+
+DFS approach - Better
+
+```python
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def valid(node, left, right):
+            if not node:
+                return True
+            if not (left < node.val < right):
+                return False
+
+            return valid(node.left, left, node.val) and valid(
+                node.right, node.val, right
+            )
+
+        return valid(root, float("-inf"), float("inf"))
+```
+
+BFS approach
+
+```python
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        q = deque([(root, float('-inf'), float('inf'))])
+        
+        while q:
+            node, left, right = q.popleft()
+            if not node:
+                continue
+            if not left < node.val < right:
+                return False
+            
+            q.append((node.left, left, node.val))
+            q.append((node.right, node.val, right))
+        return True
+```
+
+## Kth Smallest Integer in BST
+
+```python
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        # in order traversal, count
+        self.count = 0
+        self.res = root.val
+        def dfs(root):
+            if not root:
+                return
+
+            dfs(root.left)
+            self.count += 1
+            if self.count == k:
+                self.res = root.val
+            dfs(root.right)
+        dfs(root)
+        return self.res
+```
+
