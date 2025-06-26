@@ -1,43 +1,3 @@
-## Backtracking - Basic
-
-```python
-ans = []
-def dfs(start_index, path, [...additional states]):
-    if is_leaf(start_index):
-        ans.append(path[:]) # add a copy of the path to the result
-        return
-    for edge in get_edges(start_index, [...additional states]):
-        # prune if needed
-        if not is_valid(edge):
-            continue
-        path.add(edge)
-        if additional states:
-            update(...additional states)
-        dfs(start_index + len(edge), path, [...additional states])
-        # revert(...additional states) if necessary e.g. permutations
-        path.pop()
-
-```
-
-
-
-## Backtracking - Aggregation
-
-```python
-def dfs(start_index, [...additional states]):
-    if is_leaf(start_index):
-        return 1
-    ans = initial_value
-    for edge in get_edges(start_index, [...additional states]):
-        if additional states: 
-            update([...additional states])
-        ans = aggregate(ans, dfs(start_index + len(edge), [...additional states]))
-        if additional states: 
-            revert([...additional states])
-    return ans
-
-```
-
 ## Subsets
 
 ![image-20250625174257689](Backtracking.assets/image-20250625174257689.png)
@@ -65,7 +25,7 @@ class Solution:
         return res
 ```
 
-## * Combination Sum
+## \* Combination Sum
 
 ![image-20250625181455212](Backtracking.assets/image-20250625181455212.png)
 
@@ -97,7 +57,7 @@ class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         candidates.sort()
-        
+
         def backtrack(candidates, remaining, path, start):
             if remaining == 0:
                 res.append(path[:])
@@ -136,14 +96,14 @@ def backtrack(self, nums: List[int], idx: int):
         nums[idx], nums[i] = nums[i], nums[idx]   # Swap back
 ```
 
-## * Word Search
+## \* Word Search
 
 ```python
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         m, n = len(board), len(board[0])
         directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-        
+
         def dfs(r, c, index):
             if index == len(word):
                 return True
@@ -151,21 +111,20 @@ class Solution:
                 return False
             if board[r][c] != word[index]:
                 return False
-            
+
             temp = board[r][c]
             board[r][c] = "#"
-            
+
             for dr, dc in directions:
                 if dfs(r + dr, c + dc, index + 1):
                     return True
-            
+
             board[r][c] = temp
             return False
-        
+
         for i in range(m):
             for j in range(n):
                 if dfs(i, j, 0):
                     return True
         return False
 ```
-
