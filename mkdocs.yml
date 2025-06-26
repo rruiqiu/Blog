@@ -33,6 +33,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Neetcode 150:
+      - Templates: Neetcode 150/Templates.md
       - Arrays & Hashing: Neetcode 150/Arrays & Hashing.md
       - Two Pointers: Neetcode 150/Two Pointers.md
       - Sliding Window: Neetcode 150/Sliding Window.md
@@ -53,6 +54,7 @@ nav:
       - Bit Manipulation: Neetcode 150/Bit Manipulation.md
 
   - Full Stack:
+      - Software Engineering: Full Stack/Software Engineering.md
       - React: Full Stack/React.md
       - SQL: Full Stack/SQL.md
       - Backend: Full Stack/Backend.md
