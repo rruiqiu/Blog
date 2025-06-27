@@ -32,27 +32,27 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Neetcode 150:
-      - Templates: Neetcode 150/Templates.md
-      - Arrays & Hashing: Neetcode 150/Arrays & Hashing.md
-      - Two Pointers: Neetcode 150/Two Pointers.md
-      - Sliding Window: Neetcode 150/Sliding Window.md
-      - Stack: Neetcode 150/Stack.md
-      - Binary Search: Neetcode 150/Binary Search.md
-      - Linked List: Neetcode 150/Linked List.md
-      - Trees: Neetcode 150/Trees.md
-      - Heap / Priority Queue: Neetcode 150/Priority Queue(Heap).md
-      - Backtracking: Neetcode 150/Backtracking.md
-      - Tries: Neetcode 150/Tries.md
-      - Graphs: Neetcode 150/Graphs.md
-      - Advanced Graphs: Neetcode 150/Advanced Graphs.md
-      - 1-D Dynamic Programming: Neetcode 150/1-D Dynamic Programming.md
-      - 2-D Dynamic Programming: Neetcode 150/2-D Dynamic Programming.md
-      - Greedy: Neetcode 150/Greedy.md
-      - Intervals: Neetcode 150/Intervals.md
-      - Math & Geometry: Neetcode 150/Math & Geometry.md
-      - Bit Manipulation: Neetcode 150/Bit Manipulation.md
-
+  - Algorithms:
+      - Templates: Algorithms/Templates.md
+      - Arrays & Hashing: Algorithms/Arrays & Hashing.md
+      - Two Pointers: Algorithms/Two Pointers.md
+      - Sliding Window: Algorithms/Sliding Window.md
+      - Stack: Algorithms/Stack.md
+      - Binary Search: Algorithms/Binary Search.md
+      - Linked List: Algorithms/Linked List.md
+      - Trees: Algorithms/Trees.md
+      - Heap / Priority Queue: Algorithms/Priority Queue(Heap).md
+      - Backtracking: Algorithms/Backtracking.md
+      - Tries: Algorithms/Tries.md
+      - Graphs: Algorithms/Graphs.md
+      - Advanced Graphs: Algorithms/Advanced Graphs.md
+      - 1-D Dynamic Programming: Algorithms/1-D Dynamic Programming.md
+      - 2-D Dynamic Programming: Algorithms/2-D Dynamic Programming.md
+      - Greedy: Algorithms/Greedy.md
+      - Intervals: Algorithms/Intervals.md
+      - Math & Geometry: Algorithms/Math & Geometry.md
+      - Bit Manipulation: Algorithms/Bit Manipulation.md
+      - Simulation: Algorithms/Simulation.md
   - Full Stack:
       - Software Engineering: Full Stack/Software Engineering.md
       - React: Full Stack/React.md
