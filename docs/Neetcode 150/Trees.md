@@ -207,7 +207,7 @@ class Solution:
         return dfs(root)
 ```
 
-## * Lowest Common Ancestor in Binary Search Tree
+## * Lowest Common Ancestor in Binary Search Tree - DFS
 
 The DFS approach is straightforward and would take O(n) space, but we can further optimize into O(1) space.
 
@@ -249,7 +249,7 @@ class Solution:
                 return cur
 ```
 
-## Binary Tree Level Order Traversal
+## Binary Tree Level Order Traversal - BFS
 
 ```python
 class Solution:
@@ -271,6 +271,73 @@ class Solution:
             res.append(level)
         return res
 ```
+
+## Binary Tree Right Side View - BFS
+
+```python
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        # bfs and store the first appeared result
+        res = []
+        q = deque([root])
+        if not root:
+            return []
+        while q:
+            for i in range(len(q)):
+                node = q.popleft()
+                if i == 0:
+                    res.append(node.val)
+                if node.right:
+                    q.append(node.right)
+                if node.left:
+                    q.append(node.left)
+        return res
+```
+
+## Count Good Nodes in Binary Tree
+
+```python
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        # top down, pass the root.val 
+        self.count = 0
+        def dfs(root, prev_max):
+            if not root:
+                return
+
+            if root.val >= prev_max:
+                self.count += 1
+                prev_max = root.val
+
+            dfs(root.right, prev_max)
+            dfs(root.left, prev_max)
+
+        dfs(root, float('-inf'))
+        return self.count
+```
+
+Another way without using the global variables
+
+```python
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def dfs(root,max_temp):
+            if root is None:
+                return 0
+
+            total = 0
+            if root.val >= max_temp:
+                total = 1
+                max_temp = root.val
+            total += dfs(root.left,max_temp)
+            total += dfs(root.right,max_temp)
+
+            return total
+
+        return dfs(root,-inf)
+```
+
+
 
 ## Valid Binary Search Tree
 

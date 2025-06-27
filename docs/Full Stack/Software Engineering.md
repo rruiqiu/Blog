@@ -61,3 +61,4 @@ A **Squad** in Agile is a small, cross-functional, self-organizing team responsi
 - Works like a mini startup
 - Inspired by Spotify’s Agile model
 - Encourages autonomy and accountability
+

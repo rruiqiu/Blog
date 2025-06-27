@@ -161,7 +161,7 @@ class Solution:
 
 Another approach is modified binary search but 
 
-## Search in Rotated Sorted Array
+## * Search in Rotated Sorted Array
 
 This question is similar to the last question, one mistake I made is that `if nums[mid] >= nums[l]: # left sorted half` where I wrote ` >`, the idea to understand is that for some corner cases when mid == l, we still want to make sure it is within the left sorted half instead of the right half.
 
@@ -280,6 +280,46 @@ class Solution:
 
 ```
 
+## * Find Peak Element - LC162
+
+Got this question in the interview, 
+https://leetcode.com/problems/find-peak-element/solutions/788474/general-binary-search-thought-process-4-templates/?envType=study-plan-v2&envId=top-interview-150
+
+Actually lots of details for this problem, below version need to handle carefully with the mid pointer if we are checking the left neighbor, we basically need to increment the left pointer by one cuz it may otherwise cause the infinite loop.
+
+```python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        left =0
+        right = len(nums)-1
+        while left < right:
+            # Right biased mid as left = mid in else condition # prevent infinite loop
+            mid = left + (right - left + 1) //2 
+            if nums[mid] > nums[mid-1]: # True condition # go right # inc function # Last True 
+                left = mid # mid is a potential elem
+            else:
+                right = mid -1
+        return left
+```
+
+```python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        left, right = 0, len(nums) - 1
+
+        while left < right: 
+            mid = (left + right) // 2
+            if nums[mid] < nums[mid + 1]: # the reason why [mid + 1] is safe is cuz we dont need our boundary check is left < right, since right is already defined with len(nums) -1, the max of mid would only be (right - 1), and for corner case once left = mid + 1, which it will equal to the right and end the loop.
+                # Peak must be on the right side
+                left = mid + 1
+            else:
+                # Peak is on the left side or could be mid
+                right = mid
+        return left  # or return right (same at end)
+```
+
+
+
 ## Summary
 
 Binary Search can get tricky at some times, but it's important to have the idea that once we need to find something in a sorted order—even if not mentioned explicitly—**binary search should be the go-to approach** since it has **O(log n)** time complexity. And make sure to clearly define the **boundary conditions** when applying modified binary search.
@@ -322,3 +362,19 @@ def max_k_that_satisfies_condition():
     return res
 ```
 
+### Peak Element / Unsorted Array Binary Search
+
+Search in an **unsorted array** where condition is based on **relative comparison**, not a fixed target.
+
+Binary search for a peak based on **neighbor comparison**.
+
+```python
+left, right = 0, len(nums) - 1
+while left < right:
+    mid = (left + right) // 2
+    if nums[mid] > nums[mid + 1]:
+        right = mid  # peak is on the left side (including mid)
+    else:
+        left = mid + 1  # peak is on the right side
+return left
+```
