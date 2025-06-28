@@ -128,3 +128,45 @@ class Solution:
                     return True
         return False
 ```
+
+## N-Queens
+
+The order for below code is that it first tried the first column and backtrack next row, since the col on the first row first column is taken it will try the second column, mean time it will also add the diagonal to the set and configure the board[r][c]. so it would return till the very top first row, second column once the r == n, and meantime it will revert all the previous changes
+
+```python
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        col = set()
+        posDiag = set()  # r + c
+        negDiag = set()  # r - c
+
+        res = []
+        board = [["."] * n for _ in range(n)]
+
+        def backtrack(r):
+            if r == n:
+                copy = ["".join(row) for row in board]
+                res.append(copy)
+                return
+
+            for c in range(n):
+                if c in col or (r + c) in posDiag or (r - c) in negDiag:
+                    continue
+
+                col.add(c)
+                posDiag.add(r + c)
+                negDiag.add(r - c)
+                board[r][c] = "Q"
+
+                backtrack(r + 1)
+
+                col.remove(c)
+                posDiag.remove(r + c)
+                negDiag.remove(r - c)
+                board[r][c] = "."
+
+        backtrack(0)
+        return res
+
+```
+
