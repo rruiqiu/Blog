@@ -246,29 +246,6 @@ class Solution:
         return res
 ```
 
-[566. Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/)
-
-```python
-class Solution:
-    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
-        m, n = len(mat), len(mat[0])
-        if not m *n == r *c: return mat
-
-        res = [[0] *c for _ in range(r)]
-
-        # print(res)
-        flat = []
-        for i in range(m):
-            for j in range(n):
-                flat.append(mat[i][j])
-        
-        for i in range(len(flat)):
-            row = i // c
-            col = i % c
-            res[row][col] = flat[i]
-        return res
-```
-
 ### [766. Toeplitz Matrix](https://leetcode.com/problems/toeplitz-matrix/)
 
 ```python
@@ -412,5 +389,174 @@ class Solution:
 
 20 - 35 lines of code.
 
+### 3160. Find the Number of Distinct Colors Among the Balls
 
+```python
+class Solution:
+    def queryResults(self, limit: int, queries: List[List[int]]) -> List[int]:
+        # hashmap -> 1 -> 1
+        color_count = defaultdict(int) # color: count
+        # ball color can get replaced
+        # hashmap: list
+        color_index = {} # ball: color
+        res = []
+        for query in queries:
+            x, y = query
+            if x in color_index:
+                color = color_index[x]
+                color_count[color] -= 1
+                if color_count[color] == 0:
+                    del color_count[color]
+                color_index[x] = y
+                color_count[y] += 1
+            else:
+                color_index[x] = y
+                color_count[y] += 1
+            res.append(len(color_count))
+        return res
+```
+
+### 3159. Find Occurrences of an Element in an Array
+
+```python
+class Solution:
+    def occurrencesOfElement(self, nums: List[int], queries: List[int], x: int) -> List[int]:
+        # put the ans in the res index list -> brute force, use a loop
+        # list[3]1 [index:]
+
+        index_ls = []
+        res = []
+        for i,num in enumerate(nums):
+            if num == x:
+                index_ls.append(i)
+
+        print(index_ls)
+        for query in queries:
+            if len(index_ls) >= query:
+                res.append(index_ls[query-1])
+            else:
+                res.append(-1)
+        return res
+```
+
+### 532. K-diff Pairs in an Array
+
+```python
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        freq = Counter(nums)
+        res = 0
+
+        for num in freq:
+            if k !=0 and num + k in freq:
+                res += 1
+            
+            if k == 0 and freq[num] > 1:
+                res += 1
+        
+        return res
+```
+
+### 1248. Count Number of Nice Subarrays
+
+```python
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        left = 0
+        n = len(nums)
+        q_size = 0
+        count = 0
+        move = 0
+        for right, num in enumerate(nums):
+            if num % 2 != 0:
+                q_size += 1
+            
+            if q_size == k:
+                #need to shrink the window but also count the moves
+                move = 0
+                while q_size == k:
+                    q_size -= nums[left] % 2 # if odd will give a result 1 and end the loop
+                    move += 1 # 1 subarray
+                    left += 1
+            count += move
+            print(num,count)
+
+        return count
+
+```
+
+### 923. 3Sum With Multiplicity
+
+```python
+class Solution:
+    def threeSumMulti(self, arr: List[int], target: int) -> int:
+        f_count = Counter()
+        n = len(arr)
+        res = 0
+        MOD = 10 ** 9 + 7
+        for second in range(n):
+            for third in range(second+1, n):
+                find = target - arr[second] - arr[third]
+                if find in f_count:
+                    res += f_count[find] 
+            #update the first index at the end to ensure the order access
+            f_count[arr[second]] += 1
+        
+        return res % MOD
+```
+
+### 954. Array of Doubled Pairs
+
+```python
+class Solution:
+    def canReorderDoubled(self, arr: List[int]) -> bool:
+        #convert to abs
+
+        freq =  Counter(arr)
+        print(sorted(freq, key=abs)) #output a list
+
+        for num in sorted(freq, key=abs):
+            if freq[num * 2] < freq[num]:
+                return False
+
+            freq[num*2] -= freq[num]
+        return True
+```
+
+### 2131. Longest Palindrome by Concatenating Two Letter Words
+
+```python
+from collections import Counter
+from typing import List
+
+class Solution:
+    def longestPalindrome(self, words: List[str]) -> int:
+        word_count = Counter(words)
+        count = 0
+
+        for word in word_count.keys():
+            rev = word[::-1]
+
+            if word[0] == word[1]:
+                # symmetric case like "gg"
+                pairs = word_count[word] // 2
+                count += pairs * 4
+                word_count[word] -= pairs * 2
+            elif rev in word_count:
+                # asymmetric pair like "ab" and "ba"
+                pairs = min(word_count[word], word_count[rev])
+                count += pairs * 4
+                # del word_count[word]
+                # del word_count[rev]
+                word_count[word] = 0
+                word_count[rev] = 0
+
+        # After all pairing, try to use a center word like "gg"
+        for word in word_count:
+            if word[0] == word[1] and word_count[word] > 0:
+                count += 2
+                break
+
+        return count
+```
 
