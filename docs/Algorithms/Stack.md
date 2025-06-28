@@ -233,6 +233,36 @@ class Solution:
         return max_area
 ```
 
+## Largest Square In Histogram
+
+Got this question in the code signal Q4, the question is basically asking finding the largest square similar to the previous one. And the only difference would be we need to add a constraint this time which we can only choose the minimum(width, height) to calculate the square.
+
+```python
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        max_area = 0
+        stack = []  # (height, index)
+
+        for r, height in enumerate(heights):
+            curr = r
+            while stack and height < stack[-1][0]:
+                l_height, l = stack.pop()
+                width = curr - l
+                side = min(l_height, width)  # side of the square
+                max_area = max(max_area, side * side)
+                r = l  # reuse previous left boundary
+            stack.append((height, r))
+
+        r = len(heights)
+        while stack:
+            l_height, l = stack.pop()
+            width = r - l
+            side = min(l_height, width)
+            max_area = max(max_area, side * side)
+
+        return max_area
+```
+
 
 
 ## Summary

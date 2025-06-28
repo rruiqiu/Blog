@@ -64,3 +64,10 @@ nav:
       - OS: Systems/OS.md
       - OSlab: Systems/OSlab.md
       - CSAPP: Systems/CSAPP.md
+  - Design Patterns:
+      - Design Principles (SOLID): Design Patterns/SOLID.md
+      # - Behavioral Patterns: Design Patterns/Behavioral Patterns.md
+      # - Creational Patterns: Design Patterns/Creational Patterns.md
+      - Structual Patterns:
+          - Proxy: Design Patterns/Structual Patterns/Proxy.md
+          - Chain of Responsibility: Design Patterns/Structual Patterns/Chain of Responsibility.md
