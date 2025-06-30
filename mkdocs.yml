@@ -56,8 +56,8 @@ nav:
   - Full Stack:
       - Software Engineering: Full Stack/Software Engineering.md
       - React: Full Stack/React.md
-      - SQL: Full Stack/SQL.md
-      - Backend: Full Stack/Backend.md
+      # - SQL: Full Stack/SQL.md
+      # - Backend: Full Stack/Backend.md
       - Web Notes: Full Stack/Web Notes.md
       - nginx: Full Stack/nginx.md
   - Systems:
