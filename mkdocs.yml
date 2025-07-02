@@ -55,6 +55,8 @@ nav:
       - Simulation: Algorithms/Simulation.md
   - Full Stack:
       - Software Engineering: Full Stack/Software Engineering.md
+      - DevOps: Full Stack/DevOps.md
+      - Docker: Full Stack/Docker.md
       - React: Full Stack/React.md
       # - SQL: Full Stack/SQL.md
       # - Backend: Full Stack/Backend.md
