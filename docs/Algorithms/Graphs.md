@@ -1,12 +1,34 @@
-## Graph
+# Graphs
 
-### DFS
+## BFS on Graphs
 
-### BFS
+```python
+def bfs(root):
+    queue = deque([root])
+    visited = set([root])
+    while len(queue) > 0:
+        node = queue.popleft()
+        for neighbor in get_neighbors(node):
+            if neighbor in visited:
+                continue
+            queue.append(neighbor)
+            visited.add(neighbor)
+```
+
+## DFS on Graphs
+
+```python
+def dfs(root, visited):
+    for neighbor in get_neighbors(root):
+        if neighbor in visited:
+            continue
+        visited.add(neighbor)
+        dfs(neighbor, visited)
+```
 
 
 
-## Number of Islands
+## * Number of Islands
 
 DFS is more preferred for this question
 
@@ -77,25 +99,123 @@ class Solution:
         return count
 ```
 
+## Max Area of Island (Bottom up)
+
+```python
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        max_area = 0
+        m = len(grid)
+        n = len(grid[0])
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+        def dfs(x, y) -> int:
+            if not (0 <= x < m and 0 <= y < n and grid[x][y] == 1):
+                return 0
+            area = 1
+            grid[x][y] = 0
+            for dx, dy in directions:
+                area += dfs(x + dx, y + dy)
+            return area
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    max_area = max(dfs(i, j), max_area)
+
+        return max_area
+```
+
+
+
 ## Clone Graph
 
 ```python
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        oldToNew = {}
+        # hashmap [oldNode, newNode]
+        old_to_new = {}
 
         def dfs(node):
-            if node in oldToNew:
-                return oldToNew[node]
-
+            if node in old_to_new:
+                return old_to_new[node]
+            
             copy = Node(node.val)
-            oldToNew[node] = copy
-            for nei in node.neighbors:
-                copy.neighbors.append(dfs(nei))
-            return copy
+            old_to_new[node] = copy
+            for neighbour in node.neighbors:
+                copy.neighbors.append(dfs(neighbour))
 
+            return copy
+        
         return dfs(node) if node else None
 ```
+
+## Islands and Treasure - Multi source BFS
+
+The term **multi-source BFS** refers to the fact that **you are starting your breadth-first search (BFS) from multiple sources simultaneously**, rather than just one. In this question, we start the bfs from mutiple treasures at the same time interval.
+
+```python
+class Solution:
+    def islandsAndTreasure(self, grid: List[List[int]]) -> None:
+        m, n = len(grid), len(grid[0])
+        INF = 2147483647
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        q = deque()
+
+        # Add all treasures (0s) to the queue
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    q.append((i, j))
+
+        # Multi-source BFS
+        while q:
+            x, y = q.popleft()
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == INF:
+                    grid[nx][ny] = grid[x][y] + 1
+                    q.append((nx, ny))
+
+```
+
+
+
+## * Rotting Fruit -  Multisource BFS
+
+```python
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        m = len(grid)
+        n = len(grid[0])
+        fresh = 0
+        q = deque()
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    q.append((i, j))
+                elif grid[i][j] == 1:
+                    fresh += 1
+
+        minute = 0
+        while q and fresh > 0:
+            for _ in range(len(q)):
+                x, y = q.popleft()
+
+                for dx, dy in directions:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == 1:
+                        grid[nx][ny] = 2
+                        fresh -= 1
+                        q.append((nx, ny))
+            minute += 1
+
+        return minute if fresh == 0 else -1
+```
+
+
 
 ## * Course Schedule
 
