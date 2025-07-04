@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <!-- Left triangle -->
+  <path d="M5,20 L5,70 L44.5,87 L5,20 Z" fill="#cccccc"/>
+  <!-- Middle triangle, semi-transparent -->
+  <path d="M22,10 L66,75 L44.5,87 L5,20 L22,10 Z" fill="#cccccc" fill-opacity="0.5"/>
+  <!-- Right triangle -->
+  <path d="M70,20 L44.5,38 L66,75 L70,77 L70,20 Z" fill="#cccccc"/>
+  <!-- Faint overlay, more transparent -->
+  <path d="M70,20 L70,77 L84,70 L84,20 L70,20 Z" fill="#cccccc" fill-opacity="0.25"/>
+</svg>
