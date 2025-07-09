@@ -73,3 +73,5 @@ nav:
       - Structual Patterns:
           - Proxy: Design Patterns/Structual Patterns/Proxy.md
           - Chain of Responsibility: Design Patterns/Structual Patterns/Chain of Responsibility.md
+  - Others:
+      - Celpip: Others/Celpip.md
