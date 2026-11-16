@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Notes · Richard Qiu</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://rruiqiu.github.io/notes/" />
+    <meta http-equiv="refresh" content="0; url=https://rruiqiu.github.io/notes/" />
+    <script>
+      // Map old MkDocs URLs (/Blog/Algorithms/Binary%20Search/) onto the new
+      // slugs (/notes/algorithms/binary-search/). Unknown pages land on /notes/.
+      (function () {
+        var base = 'https://rruiqiu.github.io/notes/';
+        var path = decodeURIComponent(location.pathname).replace(/^\/Blog\/?/, '').replace(/\/$/, '');
+        if (!path) return location.replace(base);
+        var slug = path
+          .split('/')
+          .map(function (seg) {
+            return seg
+              .toLowerCase()
+              .replace(/&/g, 'and')
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+          })
+          .filter(Boolean)
+          .join('/');
+        location.replace(base + slug + '/');
+      })();
+    </script>
+  </head>
+  <body>
+    <p>These notes moved to <a href="https://rruiqiu.github.io/notes/">rruiqiu.github.io/notes</a>.</p>
+  </body>
+</html>
